@@ -35,45 +35,45 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
         return $this->set->count();
     }
 
-    /**
-     *
-     */
-    public function rewind()
-    {
-        $this->set->rewind();
-    }
+//    /**
+//     *
+//     */
+//    public function rewind()
+//    {
+//        $this->set->rewind();
+//    }
 
-    /**
-     * @return mixed
-     */
-    public function current()
-    {
-        return $this->set->current();
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function current()
+//    {
+//        return $this->set->current();
+//    }
 
-    /**
-     * @return int
-     */
-    public function key()
-    {
-        return $this->set->key();
-    }
+//    /**
+//     * @return int
+//     */
+//    public function key()
+//    {
+//        return $this->set->key();
+//    }
+//
+//    /**
+//     *
+//     */
+//    public function next()
+//    {
+//        $this->set->next();
+//    }
 
-    /**
-     *
-     */
-    public function next()
-    {
-        $this->set->next();
-    }
-
-    /**
-     * @return bool
-     */
-    public function valid()
-    {
-        return $this->set->valid();
-    }
+//    /**
+//     * @return bool
+//     */
+//    public function valid()
+//    {
+//        return $this->set->valid();
+//    }
 
     /**
      * @param int $offset
