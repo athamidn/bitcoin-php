@@ -50,7 +50,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function current()
     {
-        return $this->set->current();
+//        return $this->set->current();
     }
 
     /**
@@ -58,7 +58,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function key()
     {
-        return $this->set->key();
+//        return $this->set->key();
     }
 
     /**
@@ -66,7 +66,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function next()
     {
-        $this->set->next();
+//        $this->set->next();
     }
 
     /**
@@ -74,7 +74,9 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function valid()
     {
-        return $this->set->valid();
+        echo 'Deprecated';
+
+//        return $this->set->valid();
     }
 
     /**
