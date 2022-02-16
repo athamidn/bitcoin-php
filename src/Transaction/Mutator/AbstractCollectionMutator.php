@@ -7,7 +7,7 @@ namespace BitWasp\Bitcoin\Transaction\Mutator;
 abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable
 {
     /**
-     * @var \SplFixedArray
+     * @var \Iterator
      */
     protected $set;
 
@@ -40,9 +40,9 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function rewind()
     {
-        throw new \InvalidArgumentException('=================== rewind =======================');
+//        throw new \InvalidArgumentException('=================== rewind =======================');
 
-//        $this->set->rewind();
+        $this->set->rewind();
     }
 
     /**
@@ -50,9 +50,9 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function current()
     {
-        throw new \InvalidArgumentException('=================== current =======================');
+//        throw new \InvalidArgumentException('=================== current =======================');
 
-//        return $this->set->current();
+        return $this->set->current();
     }
 
     /**
@@ -61,10 +61,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     public function key()
     {
 
-        throw new \InvalidArgumentException('=================== key =======================');
+//        throw new \InvalidArgumentException('=================== key =======================');
 
 
-//        return $this->set->key();
+        return $this->set->key();
     }
 
     /**
@@ -73,10 +73,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     public function next()
     {
 
-        throw new \InvalidArgumentException('=================== next =======================');
+//        throw new \InvalidArgumentException('=================== next =======================');
 
 
-//        $this->set->next();
+        $this->set->next();
     }
 
     /**
@@ -84,10 +84,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function valid()
     {
-        throw new \InvalidArgumentException('=================== valid =======================');
+//        throw new \InvalidArgumentException('=================== valid =======================');
 
 
-//        return $this->set->valid();
+        return $this->set->valid();
     }
 
     /**
