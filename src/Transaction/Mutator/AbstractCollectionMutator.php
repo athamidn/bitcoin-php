@@ -40,7 +40,9 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function rewind()
     {
-        $this->set->rewind();
+        echo 'Deprecated';
+
+//        $this->set->rewind();
     }
 
     /**
