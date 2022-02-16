@@ -7,16 +7,18 @@ namespace BitWasp\Bitcoin\Transaction\Mutator;
 abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable
 {
     /**
-     * @var \Iterator
+     * @var array
      */
-    protected $set;
+    protected $set = [];
+
+    private $position = 0;
 
     /**
      * @return array
      */
     public function all(): array
     {
-        return $this->set->toArray();
+        return $this->set;
     }
 
     /**
@@ -25,6 +27,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     public function isNull(): bool
     {
         return count($this->set) === 0;
+
     }
 
     /**
@@ -32,7 +35,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function count(): int
     {
-        return $this->set->count();
+//        return $this->set->count();
+        return count($this->set);
     }
 
     /**
@@ -42,7 +46,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     {
 //        throw new \InvalidArgumentException('=================== rewind =======================');
 
-        $this->set->rewind();
+//        $this->set->rewind();
+        $this->position = 0;
     }
 
     /**
@@ -52,7 +57,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     {
 //        throw new \InvalidArgumentException('=================== current =======================');
 
-        return $this->set->current();
+//        return $this->set->current();
+        return $this->set[$this->position];
     }
 
     /**
@@ -64,7 +70,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
 //        throw new \InvalidArgumentException('=================== key =======================');
 
 
-        return $this->set->key();
+//        return $this->set->key();
+        return $this->position;
     }
 
     /**
@@ -76,7 +83,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
 //        throw new \InvalidArgumentException('=================== next =======================');
 
 
-        $this->set->next();
+//        $this->set->next();
+        ++$this->position;
     }
 
     /**
@@ -87,7 +95,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
 //        throw new \InvalidArgumentException('=================== valid =======================');
 
 
-        return $this->set->valid();
+//        return $this->set->valid();
+        return array_key_exists($this->position, $this->set);
     }
 
     /**
@@ -96,7 +105,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function offsetExists($offset)
     {
-        return $this->set->offsetExists($offset);
+//        return $this->set->offsetExists($offset);
+        return array_key_exists($offset, $this->set);
     }
 
     /**
@@ -108,7 +118,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
             throw new \InvalidArgumentException('Offset does not exist');
         }
 
-        $this->set->offsetUnset($offset);
+//        $this->set->offsetUnset($offset);
+        $this->set = array_slice($this->set, 0, $offset - 1) + array_slice($this->set, $offset + 1);
     }
 
     /**
@@ -117,10 +128,12 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function offsetGet($offset)
     {
-        if (!$this->set->offsetExists($offset)) {
+//        if (!$this->set->offsetExists($offset)) {
+            if (!array_key_exists($offset, $this->set)) {
             throw new \OutOfRangeException('Nothing found at this offset');
         }
-        return $this->set->offsetGet($offset);
+//        return $this->set->offsetGet($offset);
+        return $this->set[$offset];
     }
 
     /**
@@ -129,6 +142,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function offsetSet($offset, $value)
     {
-        $this->set->offsetSet($offset, $value);
+//        $this->set->offsetSet($offset, $value);
+        if ($offset > count($this->set)) {
+            throw new \InvalidArgumentException();
+        }
+        $this->set[$offset] = $value;
     }
 }
