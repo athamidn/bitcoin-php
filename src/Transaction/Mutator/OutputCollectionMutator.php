@@ -21,6 +21,7 @@ class OutputCollectionMutator extends AbstractCollectionMutator
         }
     }
 
+
     /**
      * @return OutputMutator
      */
