@@ -40,7 +40,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function rewind()
     {
-        echo 'Deprecated';
+        throw new \InvalidArgumentException('=================== rewind =======================');
 
 //        $this->set->rewind();
     }
@@ -50,6 +50,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function current()
     {
+        throw new \InvalidArgumentException('=================== current =======================');
+
 //        return $this->set->current();
     }
 
@@ -58,6 +60,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function key()
     {
+
+        throw new \InvalidArgumentException('=================== key =======================');
+
+
 //        return $this->set->key();
     }
 
@@ -66,6 +72,10 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function next()
     {
+
+        throw new \InvalidArgumentException('=================== next =======================');
+
+
 //        $this->set->next();
     }
 
@@ -74,7 +84,8 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
      */
     public function valid()
     {
-        echo 'Deprecated';
+        throw new \InvalidArgumentException('=================== valid =======================');
+
 
 //        return $this->set->valid();
     }
